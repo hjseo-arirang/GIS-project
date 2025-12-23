@@ -1,0 +1,20 @@
+spring:
+    application:
+        name: skydatageo
+    datasource:
+        url: jdbc:postgresql://localhost:5432/postgres  # DB ?? ? DB?
+        username: postgres
+        password: test
+        driver-class-name: org.postgresql.Driver
+    jpa:
+        hibernate:
+            ddl-auto: update  # ???: ??? ?? ??/??
+        properties:
+            hibernate:
+                # ??: PostGIS? ??(Dialect) ??
+                # Spring Boot 3(Hibernate 6)??? ???? ?????,
+                # ????? ????? ??? ?????.
+                dialect: org.hibernate.dialect.PostgreSQLDialect
+                # SQL ?? ??? ?? (????)
+                format_sql: true 
+        show-sql: true

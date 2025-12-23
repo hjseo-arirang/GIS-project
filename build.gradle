@@ -1,0 +1,46 @@
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '4.0.1'
+	id 'io.spring.dependency-management' version '1.1.7'
+}
+
+group = 'com.gisproject'
+version = '0.0.1-SNAPSHOT'
+description = 'Sky data gis project for Spring Boot'
+
+java {
+	toolchain {
+		languageVersion = JavaLanguageVersion.of(23)
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	// 1. Spring Boot 기본 (JPA)
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	implementation 'org.springframework.boot:spring-boot-starter-web' // 웹 기능 필요 시
+
+	// 2. PostGIS 공간 데이터 처리를 위한 핵심 라이브러리
+	// Hibernate가 DB의 Geometry 타입을 Java 객체(Point 등)로 변환해줍니다.
+	// TODO: 버전에 맞는 hibernate를 들고올 수 있도록 버전 명시 필요
+	implementation 'org.hibernate.orm:hibernate-spatial'
+
+	// 3. PostgreSQL JDBC Driver
+	runtimeOnly 'org.postgresql:postgresql'
+
+	// 4. Lombok (편의성)
+	compileOnly 'org.projectlombok:lombok'
+	annotationProcessor 'org.projectlombok:lombok'
+
+	// 5. Test
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testImplementation 'org.springframework.boot:spring-boot-starter-data-jpa-test'
+	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
