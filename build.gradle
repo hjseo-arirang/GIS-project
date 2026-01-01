@@ -16,12 +16,15 @@ java {
 
 repositories {
 	mavenCentral()
+	maven { url 'https://jitpack.io' }
 }
 
 dependencies {
 	// 1. Spring Boot 기본 (JPA)
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	implementation 'org.springframework.boot:spring-boot-starter-web' // 웹 기능 필요 시
+//	implementation 'org.opensky:opensky-api:1.3.0'
+	implementation 'com.github.openskynetwork:opensky-api:master-SNAPSHOT'
 
 	// 2. PostGIS 공간 데이터 처리를 위한 핵심 라이브러리
 	// Hibernate가 DB의 Geometry 타입을 Java 객체(Point 등)로 변환해줍니다.
