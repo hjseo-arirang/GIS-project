@@ -7,5 +7,5 @@ import org.springframework.stereotype.Repository;
 // <Entity 클래스, PK의 타입>
 @Repository
 public interface AircraftRepository extends JpaRepository<Aircraft, String> {
-    // save(), saveAll(), findById(), delete()
+    // save(), saveAll(), findById(), delete()...
 }

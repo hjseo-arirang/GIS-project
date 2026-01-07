@@ -4,13 +4,16 @@ import com.gisproject.skydatageo.model.dto.AircraftDTO;
 import org.opensky.api.OpenSkyApi;
 import org.opensky.model.OpenSkyStates;
 import org.opensky.model.StateVector;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-@Component
+@Service
+@Profile("real_server")
 public class OpenSkyFlightDataProvider implements FlightDataProvider {
     private final OpenSkyApi api = new OpenSkyApi("아이디", "비번"); //TODO 아이디/비번 업데이트
 
