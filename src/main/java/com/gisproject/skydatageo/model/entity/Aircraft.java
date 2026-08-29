@@ -17,4 +17,13 @@ public class Aircraft extends BaseAircraft {
     private String flightId; // 비행편명 (PK)
     //TODO 추후 마이그레이션을 고려한 필드 추가 필요
 
+    @Override
+    public String toString() {
+        StringBuilder builder = new StringBuilder();
+        builder.append("flightId: " + flightId + ", ");
+        builder.append("callSign: " + callSign + ", ");
+        builder.append("lastContactTime: " + lastSeen);
+
+        return builder.toString();
+    }
 }

@@ -38,12 +38,25 @@ public class AircraftService {
                     existAircraft -> {
                         // current_aircraft 테이블에 존재하는, 이미 식별된 비행기일 경우
                         existAircraft.updateFromDTO(aircraftDTO);
+                        System.out.println("existAircraft: " + existAircraft.toString());
+                        // 이미 데이터베이스가 생긴것 같다고 함 (로그만 보면)
+                        /*
+                        ====== [DbInspector] Checking Database Tables ======
+                        Connected Database: postgres
+                        Current Schema: public
+                        Found tables:
+                         - public.spatial_ref_sys
+                         - public.current_aircrafts
+                         - public.aircraft_history
+                        ====================================================
+                         */
                         aircrafts.add(existAircraft);
                     },
                     () -> {
                         // 처음 등장하는 신규 비행기
                         Aircraft newAircraft = Aircraft.builder().flightId(aircraftDTO.icao24()).build();
                         newAircraft.updateFromDTO(aircraftDTO);
+                        System.out.println("newAircraft: " + newAircraft.toString());
                         aircrafts.add(newAircraft);
                     }
             );
